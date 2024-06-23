@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "scss": "node-sass src/styles/_global.scss ../phpboard/styles/global.css"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
@@ -15,6 +16,7 @@
     "@vitejs/plugin-vue": "^5.0.5",
     "alpinejs": "^3.14.1",
     "astro": "^4.10.3",
+    "node-sass": "^9.0.0",
     "typescript": "^5.4.5",
     "vue": "^3.4.29"
   },

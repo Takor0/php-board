@@ -11,14 +11,14 @@ import ATextArea from '../components/ATextArea.astro'
 	<script src="/src/parser.js"></script>
 	<script src="//unpkg.com/alpinejs" defer></script>
 	<script>
-    Alpine.store('tab', {
-        currentTab: 'Moto',
+      Alpine.store('tab', {
+          currentTab: 'Moto',
 
-        setActive(tab) {
-            this.currentTab = tab
-        }
-    })
-</script>
+          setActive(tab) {
+              this.currentTab = tab
+          }
+      })
+	</script>
 </head>
 </html>
 <div class="a-home">
@@ -47,15 +47,15 @@ import ATextArea from '../components/ATextArea.astro'
   @import '../styles/_global.scss';
 
   .a-home {
-	  padding: 1rem;
-	  height: calc(100vh - 2rem);
+    padding: 1rem;
+    height: calc(100vh - 2rem);
 
 
-	  .content{
-		  height: calc(100% - 175px);
-		  overflow: auto;
-		  padding: 1rem;
-	  }
+    .content {
+      height: calc(100% - 175px);
+      overflow: auto;
+      padding: 1rem;
+    }
 
     .user-input {
       textarea {
