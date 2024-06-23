@@ -10,6 +10,15 @@ import ATextArea from '../components/ATextArea.astro'
 	<meta charset="UTF-8">
 	<script src="/src/parser.js"></script>
 	<script src="//unpkg.com/alpinejs" defer></script>
+	<script>
+    Alpine.store('tab', {
+        currentTab: 'Moto',
+
+        setActive(tab) {
+            this.currentTab = tab
+        }
+    })
+</script>
 </head>
 </html>
 <div class="a-home">
@@ -17,10 +26,9 @@ import ATextArea from '../components/ATextArea.astro'
 		class="w-100 d-flex justify-content-around align-items-center"
 	>
 		<ATabs additionalClass="w-100 justify-content-between" options={["Moto", "Sport", "Programowanie"]}/>
-
 	</div>
 	<div class="content">
-		<APage>
+		<APage currentTab='asd'>
 
 		</APage>
 	</div>
@@ -29,8 +37,8 @@ import ATextArea from '../components/ATextArea.astro'
 			style="right: 0; width: fit-content"
 			class="ml-auto py-3 ms-auto d-flex user-input"
 		>
-			<ATextArea :rows="2" v-model="newPostValue"/>
-			<AButton @click="send">Send</AButton>
+			<ATextArea/>
+			<AButton>Send</AButton>
 		</div>
 	</div>
 

@@ -1,12 +1,28 @@
 ---
+import { a2a } from '../parser.js'
 import APost from '../components/APost.astro'
+const {currentTab= 'Moto'} = Astro.props
+const posts = [
+    {
+        author: "Astro",
+        createdAt: "2021-09-01",
+        content: "This is test post 1"
+    },
+    {
+        author: "Tomaszek",
+        createdAt: "2021-09-02",
+        content: "Hello I am post"
+    }
+]
 ---
-<div class="d-flex flex-column gap-4" x-data="{cnt: 12}">
-	<template x-for="_ in cnt">
-		<APost/>
-	</template>
+<div class="d-flex flex-column gap-4">
+    {`${currentTab}`}
+    {
+        posts.map(post => (
+					<APost post={post}/>
+        ))
+    }
 </div>
 <style lang="scss">
   @import '../styles/_global.scss';
-  
 </style>

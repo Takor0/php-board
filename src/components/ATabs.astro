@@ -2,11 +2,22 @@
 import { a2a } from '../parser.js'
 const {options, additionalClass, active = 'Moto'} = Astro.props
 ---
-<div class:list={['a-tabs d-flex flex-row', additionalClass]} x-data={a2a({options: options, active: active})}>
-	<template x-for="index in options">
-		<div x-bind:class="active ===index ? 'tab__selected' : ''" @click="active = index" class="tab" x-text="index"/>
+
+
+<div
+	class:list={['a-tabs d-flex flex-row', additionalClass]}
+	x-data={a2a({options: options, active: active})}
+>
+	<template x-for="opt in options">
+		<div
+			x-bind:class="active === opt ? 'tab__selected' : ''"
+			@click="$store.tab.setActive(opt); active = opt"
+			class="tab"
+				 x-text="opt"/>
 	</template>
 </div>
+
+
 <style lang="scss">
   @import "../styles/_global.scss";
 
