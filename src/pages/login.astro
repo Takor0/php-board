@@ -1,0 +1,44 @@
+---
+import AInput from '../components/AInput.astro'
+import AButton from '../components/AButton.astro'
+
+let isRegister = false;
+---
+<script lang="ts">
+    const isRegister = 'asd';
+</script>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="//unpkg.com/alpinejs" defer></script>
+</head>
+</html>
+<div class="login d-flex align-items-center justify-content-center" style="height: 90vh">
+	<div class="d-flex flex-column gap-3 align-items-center">
+		<AInput
+			label="Email"
+		/>
+		<AInput
+			label="Password"
+		/>
+		<AButton
+			additionalClass="w-100"
+			type="submit"
+			@click="handleButtonClick"
+		>Zaloguj
+		</AButton>
+		<div
+			class="c-primary mt-2"
+			x-data="{isRegister: false}"
+		>
+			<span x-text="isRegister ? 'Nie posiadasz konta?' : 'Posiadasz już konto?'" />
+			<span
+				class="fw-bold pointer"
+				x-text="isRegister ? 'Zarejestur się' : 'Zaloguj się'" @click="isRegister = !isRegister"
+			/>
+		</div>
+	</div>
+</div>
+<style lang="scss">
+  @import '../styles/_global.scss';
+</style>

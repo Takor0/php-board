@@ -1,0 +1,30 @@
+---
+import { a2a } from '../parser.js'
+const {options, additionalClass, active = 'Moto'} = Astro.props
+---
+<div class:list={['a-tabs d-flex flex-row', additionalClass]} x-data={a2a({options: options, active: active})}>
+	<template x-for="index in options">
+		<div x-bind:class="active ===index ? 'tab__selected' : ''" @click="active = index" class="tab" x-text="index"/>
+	</template>
+</div>
+<style lang="scss">
+  @import "../styles/_global.scss";
+
+  .a-tabs {
+    background-color: black;
+    width: fit-content;
+    border-radius: 8px;
+
+    .tab {
+      color: $primary;
+      cursor: pointer;
+      padding: 12px 32px;
+
+      &__selected {
+        background-color: $primary;
+        color: black;
+        border-radius: 8px;
+      }
+    }
+  }
+</style>

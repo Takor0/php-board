@@ -1,0 +1,12 @@
+---
+import APost from '../components/APost.astro'
+---
+<div class="d-flex flex-column gap-4" x-data="{cnt: 12}">
+	<template x-for="_ in cnt">
+		<APost/>
+	</template>
+</div>
+<style lang="scss">
+  @import '../styles/_global.scss';
+  
+</style>
