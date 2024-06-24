@@ -8,11 +8,17 @@ use models\Post;
 class PostRepository extends Post
 {
 
-    function getALlPerCategory($category)
+    function get_all_per_category($category)
     {
-        $stmt = $this->dbConnection->prepare("SELECT * FROM post WHERE category = :category ORDER BY created_at DESC");
+        $stmt = $this->dbConnection->prepare("SELECT * FROM post WHERE category = :category ORDER BY created_at ASC");
         $stmt->execute([':category' => $category]);
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    function create_post($content, $category, $author)
+    {
+        $stmt = $this->dbConnection->prepare("INSERT INTO post (content, category, author) VALUES (:content, :category, :author)");
+        $stmt->execute([':content' => $content, ':category' => $category, ':author' => $author]);
     }
 
 }

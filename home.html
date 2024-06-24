@@ -7,13 +7,12 @@
 </html>
 <body>
 <link>
-<div>
-	<form
-		class="a-tabs w-100 flex-row d-flex justify-content-between"
-		x-data="{
+<div class="a-home" x-data="{
 			tabs: ['Moto', 'Programowanie', 'Sport'],
 			active: new URLSearchParams(window.location.search).get('tab') || 'Moto'
-		}"
+		}">
+	<form
+		class="a-tabs w-100 flex-row d-flex justify-content-between"
 		method="get"
 		action="home.php"
 	>
@@ -29,5 +28,55 @@
 			</button>
 		</template>
 	</form>
+	<div class="content" x-data="posts">
+		<div class="d-flex flex-column gap-4">
+			<template x-for="post in posts">
+				<div class="a-post d-flex flex-column gap-3">
+					<span class="d-flex justify-content-between">
+						<label x-html="post.author">
+						</label>
+						<label x-html="post.created_at">
+						</label>
+					</span>
+					<div class="content" x-html="post.content">
+					</div>
+				</div>
+			</template>
+		</div>
+	</div>
+	<form
+		x-bind:action="`post.php?tab=${active}`"
+		style="right: 0; width: fit-content"
+		class="ml-auto py-3 ms-auto d-flex user-input"
+		method="post"
+	>
+		<input type="hidden" name="tab" x-bind:value="active">
+		<div class="a-text-area">
+			<span class="d-flex">
+				<textarea name="content" required></textarea>
+			</span>
+		</div>
+		<button class="a-button primary">
+			Wyślij
+		</button>
+	</form>
 </div>
 </body>
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('posts', () => ({
+            posts: posts
+        }))
+    })
+    const test = []
+    var i = 0
+    while (i < 10) {
+        test.push({
+            content: "asdsasadasd",
+            created_at: "fsdsaddas",
+            author: "dasds",
+        })
+        i++
+    }
+
+</script>

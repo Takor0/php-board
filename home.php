@@ -7,9 +7,14 @@ use repository\PostRepository;
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $tab = $_GET['tab'];
     $postRepo = new PostRepository();
-    $posts = $postRepo->getALlPerCategory($tab);
-    readfile("home.html");
+    $posts = json_encode($postRepo->get_all_per_category($tab));
 
-    echo $posts[0]->content;
+
+    readfile('home.html');
+    echo "
+    <script>
+        const posts = $posts
+    </script>
+    ";
 
 }
