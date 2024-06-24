@@ -4119,9 +4119,11 @@ body {
   width: fit-content;
   border-radius: 8px; }
   .a-tabs .tab {
+    border: none;
     color: #a1c719;
     cursor: pointer;
-    padding: 12px 32px; }
+    padding: 12px 32px;
+    background-color: black; }
     .a-tabs .tab__selected {
       background-color: #a1c719;
       color: black;

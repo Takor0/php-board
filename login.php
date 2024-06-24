@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_POST['email'], $_POST['password']
     );
     if ($canLogin) {
-        header('Location: /home.php');
+        header('Location: /home.php?tab=Programowanie');
     } else {
         readfile('login.html');
         echo "

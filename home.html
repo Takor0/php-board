@@ -10,7 +10,10 @@
 <div>
 	<form
 		class="a-tabs w-100 flex-row d-flex justify-content-between"
-		x-data="{tabs: ['Moto', 'Programowanie', 'Sport'], active: 'Moto'}"
+		x-data="{
+			tabs: ['Moto', 'Programowanie', 'Sport'],
+			active: new URLSearchParams(window.location.search).get('tab') || 'Moto'
+		}"
 		method="get"
 		action="home.php"
 	>
@@ -21,12 +24,10 @@
 				@click="active = tab"
 				x-html="tab"
 				x-model="tab"
+				name="tab"
 			>
 			</button>
 		</template>
 	</form>
 </div>
-<script>
-
-</script>
 </body>
