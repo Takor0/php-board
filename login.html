@@ -1,0 +1,61 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<link rel="stylesheet" href="styles/global.css">
+</head>
+
+</html>
+<body>
+<link>
+<div class="login d-flex align-items-center justify-content-center" style="height: 90vh" x-data="{isRegister: false}">
+	<form method="post" action="login.php" class="d-flex flex-column gap-3 align-items-center" x-data="inputs">
+		<template x-for="input in inputs">
+			<div class="a-input ">
+				<div class="a-input__wrapper ">
+					<input
+						x-bind:placeholder="input.value"
+						x-bind:type="input.type"
+						x-model="input.value"
+						required
+						:id="input.name"
+						:name="input.name"
+					/>
+					<label for="label" x-html="input.label">{label}</label>
+				</div>
+			</div>
+		</template>
+		<button
+			class="w-100 primary a-button"
+			type="submit"
+			x-text="isRegister ? 'Zarejestruj się' : 'Zaloguj się'"
+		>
+		</button>
+		<div
+			class="c-primary mt-2"
+		>
+			<span x-text="isRegister ? 'Nie posiadasz konta?' : 'Posiadasz już konto?'"></span>
+			<span
+				class="fw-bold pointer"
+				x-text="isRegister ? 'Zarejestur się' : 'Zaloguj się'" @click="isRegister = !isRegister"></span>
+		</div>
+	</form>
+</div>
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('inputs', () => ({
+            inputs: [{
+                label: 'Email',
+                name: 'email',
+                type: 'email',
+								value: ''
+            }, {
+                label: 'Hasło',
+                type: 'password',
+                name: 'password',
+								value: ''
+            }],
+        }))
+    })
+</script>
+</body>

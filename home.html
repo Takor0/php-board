@@ -1,0 +1,32 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<link rel="stylesheet" href="styles/global.css">
+</head>
+</html>
+<body>
+<link>
+<div>
+	<form
+		class="a-tabs w-100 flex-row d-flex justify-content-between"
+		x-data="{tabs: ['Moto', 'Programowanie', 'Sport'], active: 'Moto'}"
+		method="get"
+		action="home.php"
+	>
+		<template x-for="tab in tabs">
+			<button
+				class="tab"
+				x-bind:class="active === tab ? 'tab__selected' : ''"
+				@click="active = tab"
+				x-html="tab"
+				x-model="tab"
+			>
+			</button>
+		</template>
+	</form>
+</div>
+<script>
+
+</script>
+</body>
