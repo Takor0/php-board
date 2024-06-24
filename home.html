@@ -3,6 +3,7 @@
 	<meta charset="UTF-8">
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	<link rel="stylesheet" href="styles/global.css">
+	<link rel="stylesheet" href="assets/css/all.css">
 </head>
 </html>
 <body>
@@ -31,14 +32,70 @@
 	<div class="content" x-data="posts">
 		<div class="d-flex flex-column gap-4">
 			<template x-for="post in posts">
-				<div class="a-post d-flex flex-column gap-3">
+				<div class="a-post position-relative d-flex flex-column gap-3">
 					<span class="d-flex justify-content-between">
 						<label x-html="post.author">
 						</label>
 						<label x-html="post.created_at">
 						</label>
 					</span>
-					<div class="content" x-html="post.content">
+					<template x-if="!isEdit[post.id]">
+						<div class="content" x-html="post.content"></div>
+					</template>
+					<template x-if="isEdit[post.id]">
+						<form
+							method="post"
+							x-bind:action="`post.php?tab=${active}`"
+							class="a-text-area"
+						>
+							<span class="d-flex">
+								<input type="hidden" name="action" value="edit_post">
+								<input
+									type="hidden"
+									name="id"
+									x-bind:value="post.id"
+								>
+								<textarea x-model="post.content" name="content" required></textarea>
+								<button class="a-button primary">
+									Zapisz
+								</button>
+							</span>
+						</form>
+					</template>
+					<div class="action">
+						<template x-if="!isEdit[post.id]">
+							<span class="icon-form" @click="isEdit[post.id] = true; originalValue[post.id] = post.content">
+							<button class="a-icon-button">
+								<img src="assets/icons/pencil.svg">
+							</button>
+						</span>
+						</template>
+						<template x-if="!isEdit[post.id]">
+							<form
+								class="icon-form"
+								method="post"
+								x-bind:action="`post.php?tab=${active}`"
+							>
+								<input
+									type="hidden"
+									name="action"
+									value="delete_post"
+								>
+								<input
+									type="hidden"
+									name="id"
+									x-bind:value="post.id"
+								>
+								<button class="a-icon-button">
+									<img src="assets/icons/xmark.svg">
+								</button>
+							</form>
+						</template>
+						<template x-if="isEdit[post.id]">
+							<button class="a-icon-button" @click="isEdit[post.id] = false; post.content = originalValue[post.id]">
+								<img src="assets/icons/xmark.svg">
+							</button>
+						</template>
 					</div>
 				</div>
 			</template>
@@ -50,7 +107,7 @@
 		class="ml-auto py-3 ms-auto d-flex user-input"
 		method="post"
 	>
-		<input type="hidden" name="tab" x-bind:value="active">
+		<input type="hidden" name="action" value="create_post">
 		<div class="a-text-area">
 			<span class="d-flex">
 				<textarea name="content" required></textarea>
@@ -65,7 +122,9 @@
 <script>
     document.addEventListener('alpine:init', () => {
         Alpine.data('posts', () => ({
-            posts: posts
+            posts: posts,
+            isEdit: {},
+            originalValue: {},
         }))
     })
     const test = []
@@ -80,3 +139,18 @@
     }
 
 </script>
+<style>
+    .action {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        gap: 4px;
+    }
+
+    .icon-form {
+        margin-block-end: 1em;
+    }
+</style>

@@ -21,4 +21,15 @@ class PostRepository extends Post
         $stmt->execute([':content' => $content, ':category' => $category, ':author' => $author]);
     }
 
+    function delete_post($id)
+    {
+        $stmt = $this->dbConnection->prepare("DELETE FROM post WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+    }
+    function edit_post_content($id, $content)
+    {
+        $stmt = $this->dbConnection->prepare("UPDATE post SET content = :content WHERE id = :id");
+        $stmt->execute([':content' => $content, ':id' => $id]);
+    }
+
 }

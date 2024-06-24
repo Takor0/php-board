@@ -10,6 +10,6 @@
 - [x] użycie pętli, instrukcje warunkowe, tablice, funkcji
 - [x]  użycie programowania obiektowego - logiczny podział na klasy
 - [ ] (dodatkowo) użycie czegoś zaawansowanego z PHP, co nie było pokazywane na zajęciach - biblioteka, narzędzie, konstrukcja, temat (wymagane omówienie)
-- [ ] (dodatkowo) użycie czegoś, co nie było pokazywane na zajęciach (dodatkowy język, skrypty) - biblioteka, narzędzie, konstrukcja, temat (wymagane krótkie omówienie)
-- [] hostowanie strony na uczelnianym serwerze
+- [x] (dodatkowo) użycie czegoś, co nie było pokazywane na zajęciach (dodatkowy język, skrypty) - biblioteka, narzędzie, konstrukcja, temat (wymagane krótkie omówienie)
+- [ ] hostowanie strony na uczelnianym serwerze
 - [ ] (dodatkowo) hostowanie na zewnętrznym serwerze

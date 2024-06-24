@@ -4109,7 +4109,7 @@ body {
   border: 1px solid #a1c719;
   color: #a1c719;
   border-radius: 5px;
-  padding: 16px; }
+  padding: 26px; }
   .a-post label {
     font-weight: 300;
     font-size: 13px; }
@@ -4144,3 +4144,13 @@ body {
     transition: border 0.2s; }
   .a-text-area textarea:focus {
     border-color: #a1c719; }
+
+.a-icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #a1c719;
+  cursor: pointer; }
+  .a-icon-button img {
+    height: 12px;
+    width: 12px; }
