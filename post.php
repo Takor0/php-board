@@ -1,9 +1,12 @@
 <?php
 include __DIR__ . '/src/repository/PostRepository.php';
+include __DIR__ . '/src/utils/tab.php';
 
 use repository\PostRepository;
+use function utils\get_tab;
 
-$tab = $_GET['tab'];
+
+$tab = get_tab();
 
 function handle_create_post()
 {
@@ -31,6 +34,25 @@ function handle_edit_post()
     $postRepo->edit_post_content($id, $content);
 }
 
+function handle_posts_export()
+{
+    global $tab;
+    $postRepo = new PostRepository();
+    $posts = $postRepo->get_all_per_category($tab);
+    $filename = "$tab.txt";
+    $file = fopen($filename, 'w');
+    foreach ($posts as $post) {
+        $row = "[$post->created_at] $post->author: $post->content\n";
+        fputs($file, $row);
+    }
+    fclose($file);
+    header('Content-Type: application/csv');
+    header("Content-Disposition: attachment; filename=$filename");
+    header('Pragma: no-cache');
+    readfile($filename);
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     switch ($_POST['action']) {
         case 'create_post':
@@ -41,6 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
         case 'edit_post':
             handle_edit_post();
+            break;
+        case 'export_posts':
+            handle_posts_export();
             break;
     }
 }

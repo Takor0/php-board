@@ -45,7 +45,7 @@
 					<template x-if="isEdit[post.id]">
 						<form
 							method="post"
-							x-bind:action="`post.php?tab=${active}`"
+							x-bind:action="`post.php`"
 							class="a-text-area"
 						>
 							<span class="d-flex">
@@ -74,7 +74,7 @@
 							<form
 								class="icon-form"
 								method="post"
-								x-bind:action="`post.php?tab=${active}`"
+								x-bind:action="`post.php`"
 							>
 								<input
 									type="hidden"
@@ -101,22 +101,35 @@
 			</template>
 		</div>
 	</div>
-	<form
-		x-bind:action="`post.php?tab=${active}`"
-		style="right: 0; width: fit-content"
-		class="ml-auto py-3 ms-auto d-flex user-input"
-		method="post"
-	>
-		<input type="hidden" name="action" value="create_post">
-		<div class="a-text-area">
+	<div class="d-flex align-items-center justify-content-end">
+		<form
+			x-bind:action="`post.php`"
+			style="right: 0; width: fit-content"
+			class="py-3 ms-auto d-flex user-input"
+			method="post"
+		>
+			<input type="hidden" name="action" value="create_post">
+			<div class="a-text-area">
 			<span class="d-flex">
 				<textarea name="content" required></textarea>
 			</span>
-		</div>
-		<button class="a-button primary">
-			Wyślij
-		</button>
-	</form>
+			</div>
+			<button class="a-button primary">
+				Wyślij
+			</button>
+		</form>
+		<form
+			class="ml-4"
+			x-bind:action="`post.php`"
+			style="height: 64px"
+			method="post"
+		>
+			<input type="hidden" name="action" value="export_posts">
+			<button class="a-button primary h-100">
+				Eksportuj
+			</button>
+		</form>
+	</div>
 </div>
 </body>
 <script>
@@ -145,8 +158,8 @@
         display: flex;
         flex-direction: row;
         position: absolute;
-        right: 4px;
-        top: 4px;
+        right: 8px;
+        top: 8px;
         gap: 4px;
     }
 
