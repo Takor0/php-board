@@ -30,7 +30,7 @@ function handle_delete_post(): int
     $id = $_POST['id'];
     $postRepo = new PostRepository();
     $post = $postRepo->findById($id);
-    if ($post->author !== $_SESSION['email'] || $_SESSION['role'] !== 'admin') {
+    if ($post['author'] !== $_SESSION['email'] || $_SESSION['role'] !== 'admin') {
         return 400;
     }
     $postRepo->delete_post($id);
@@ -43,7 +43,7 @@ function handle_edit_post(): int
 
     $postRepo = new PostRepository();
     $post = $postRepo->findById($id);
-    if ($post->author !== $_SESSION['email']) {
+    if ($post['author'] !== $_SESSION['email']) {
         return 400;
     }
 

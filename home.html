@@ -32,7 +32,8 @@
 	<div class="content" x-data="posts">
 		<div class="d-flex flex-column gap-4">
 			<template x-for="post in posts">
-				<div class="a-post position-relative d-flex flex-column gap-3">
+				<div class="a-post position-relative d-flex flex-column gap-3"
+						 x-bind:class="user.email === post.author ? 'ml-auto': ''">
 					<span class="d-flex justify-content-between">
 						<label x-html="post.author">
 						</label>
@@ -63,14 +64,14 @@
 						</form>
 					</template>
 					<div class="action">
-						<template x-if="!isEdit[post.id]">
+						<template x-if="!isEdit[post.id] && user.email === post.author">
 							<span class="icon-form" @click="isEdit[post.id] = true; originalValue[post.id] = post.content">
 							<button class="a-icon-button">
 								<img src="assets/icons/pencil.svg">
 							</button>
 						</span>
 						</template>
-						<template x-if="!isEdit[post.id]">
+						<template x-if="!isEdit[post.id] && (user.role === 'admin' || post.author === user.email)">
 							<form
 								class="icon-form"
 								method="post"
@@ -102,22 +103,24 @@
 		</div>
 	</div>
 	<div class="d-flex align-items-center justify-content-end">
-		<form
-			x-bind:action="`post.php`"
-			style="right: 0; width: fit-content"
-			class="py-3 ms-auto d-flex user-input"
-			method="post"
-		>
-			<input type="hidden" name="action" value="create_post">
-			<div class="a-text-area">
+		<template x-if="user.email">
+			<form
+				x-bind:action="`post.php`"
+				style="right: 0; width: fit-content"
+				class="py-3 ms-auto d-flex user-input"
+				method="post"
+			>
+				<input type="hidden" name="action" value="create_post">
+				<div class="a-text-area">
 			<span class="d-flex">
 				<textarea name="content" required></textarea>
 			</span>
-			</div>
-			<button class="a-button primary">
-				Wyślij
-			</button>
-		</form>
+				</div>
+				<button class="a-button primary">
+					Wyślij
+				</button>
+			</form>
+		</template>
 		<form
 			class="ml-4"
 			x-bind:action="`post.php`"
@@ -168,7 +171,7 @@
     }
 </style>
 <script>
-	const url = new URL("https://example.com?foo=1&bar=2&foo=3");
-  const params = new URLSearchParams(url.search);
-  params.delete("foo");
+    const url = new URL("https://example.com?foo=1&bar=2&foo=3");
+    const params = new URLSearchParams(url.search);
+    params.delete("foo");
 </script>

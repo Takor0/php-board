@@ -5,6 +5,7 @@ include __DIR__ . '/src/utils/tab.php';
 
 use function utils\get_tab;
 use repository\PostRepository;
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $tab = get_tab();
@@ -24,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     echo "
     <script>
         const posts = $posts
+        const user = {email: '" . $_SESSION['email'] . "', role: '" . $_SESSION['role'] . "'}
+        console.log(user)
     </script>
     ";
 
