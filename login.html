@@ -8,7 +8,7 @@
 </html>
 <body>
 <link>
-<div class="login d-flex align-items-center justify-content-center" style="height: 90vh" x-data="{isRegister: false}">
+<div class="login d-flex align-items-center justify-content-center" style="height: 90vh">
 	<form method="post" action="login.php" class="d-flex flex-column gap-3 align-items-center" x-data="inputs">
 		<template x-for="input in inputs">
 			<div class="a-input ">
@@ -28,17 +28,9 @@
 		<button
 			class="w-100 primary a-button"
 			type="submit"
-			x-text="isRegister ? 'Zarejestruj się' : 'Zaloguj się'"
 		>
+			Zaloguj się
 		</button>
-		<div
-			class="c-primary mt-2"
-		>
-			<span x-text="isRegister ? 'Nie posiadasz konta?' : 'Posiadasz już konto?'"></span>
-			<span
-				class="fw-bold pointer"
-				x-text="isRegister ? 'Zarejestur się' : 'Zaloguj się'" @click="isRegister = !isRegister"></span>
-		</div>
 	</form>
 </div>
 <script>
@@ -48,12 +40,12 @@
                 label: 'Email',
                 name: 'email',
                 type: 'email',
-								value: ''
+                value: ''
             }, {
                 label: 'Hasło',
                 type: 'password',
                 name: 'password',
-								value: ''
+                value: ''
             }],
         }))
     })

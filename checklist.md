@@ -5,7 +5,7 @@
 - [x] odczytywanie z bazy danych
 - [x] aktualizowanie i usuwanie z bazy danych
 - [x] prosty system logowania z weryfikacją adresu e-mail
-- [ ] użycie sesji w projekcie, nie sztuczne, tylko takie by pozwalało realnie zobrazować ich funkcjonalność
+- [x] użycie sesji w projekcie, nie sztuczne, tylko takie by pozwalało realnie zobrazować ich funkcjonalność
 - [x] użycie ciasteczek - utworzenie oraz realne skorzystanie z nich
 - [x] użycie pętli, instrukcje warunkowe, tablice, funkcji
 - [x] użycie programowania obiektowego - logiczny podział na klasy
