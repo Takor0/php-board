@@ -1,7 +1,7 @@
 <?php
 
 namespace models;
-include __DIR__ . '/../db/DatabaseConnector.php';
+include_once __DIR__ . '/../db/DatabaseConnector.php';
 
 use db\DatabaseConnector;
 

@@ -1,10 +1,17 @@
 <?php
 
 namespace utils;
-//logike jakas do tokena
+include_once(__DIR__ . '/../repository/UserRepository.php');
 
-function set_user_token($email)
+use repository\UserRepository;
+
+
+function set_user_session($email)
 {
     session_start();
-    $_SESSION['token'] = md5($email . time());
+
+    $userRepo = new UserRepository();
+    $user = $userRepo->findByEmail($email);
+    $_SESSION['role'] = $user['role'];
+    $_SESSION['email'] = $user['email'];
 }

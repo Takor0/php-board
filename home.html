@@ -167,3 +167,8 @@
         margin-block-end: 1em;
     }
 </style>
+<script>
+	const url = new URL("https://example.com?foo=1&bar=2&foo=3");
+  const params = new URLSearchParams(url.search);
+  params.delete("foo");
+</script>

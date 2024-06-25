@@ -1,7 +1,7 @@
 <?php
 
 namespace models;
-include __DIR__ . '/Model.php';
+include_once __DIR__ . '/Model.php';
 
 class Post extends Model
 {

@@ -1,7 +1,7 @@
 <?php
 
 namespace repository;
-include(__DIR__ . '/../models/User.php');
+include_once(__DIR__ . '/../models/User.php');
 
 use models\User;
 

@@ -4,12 +4,12 @@
 - [x] zapisywanie do bazy danych (mysql)
 - [x] odczytywanie z bazy danych
 - [x] aktualizowanie i usuwanie z bazy danych
-- [ ] prosty system logowania z weryfikacją adresu e-mail
+- [x] prosty system logowania z weryfikacją adresu e-mail
 - [ ] użycie sesji w projekcie, nie sztuczne, tylko takie by pozwalało realnie zobrazować ich funkcjonalność
-- [ ] użycie ciasteczek - utworzenie oraz realne skorzystanie z nich
+- [x] użycie ciasteczek - utworzenie oraz realne skorzystanie z nich
 - [x] użycie pętli, instrukcje warunkowe, tablice, funkcji
-- [x]  użycie programowania obiektowego - logiczny podział na klasy
+- [x] użycie programowania obiektowego - logiczny podział na klasy
+- [ ] hostowanie strony na uczelnianym serwerze
 - [ ] (dodatkowo) użycie czegoś zaawansowanego z PHP, co nie było pokazywane na zajęciach - biblioteka, narzędzie, konstrukcja, temat (wymagane omówienie)
 - [x] (dodatkowo) użycie czegoś, co nie było pokazywane na zajęciach (dodatkowy język, skrypty) - biblioteka, narzędzie, konstrukcja, temat (wymagane krótkie omówienie)
-- [ ] hostowanie strony na uczelnianym serwerze
-  - [ ] (dodatkowo) hostowanie na zewnętrznym serwerze
+- [ ] (dodatkowo) hostowanie na zewnętrznym serwerze

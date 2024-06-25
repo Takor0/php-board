@@ -11,8 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $postRepo = new PostRepository();
     $posts = json_encode($postRepo->get_all_per_category($tab));
 
+    $code = $_GET['code'];
 
     readfile('home.html');
+    if ($code == 400) {
+        echo "
+        <script>
+            alert('Bad request');
+        </script>
+        ";
+    }
     echo "
     <script>
         const posts = $posts

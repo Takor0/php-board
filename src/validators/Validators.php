@@ -1,7 +1,7 @@
 <?php
 
 namespace validators;
-include(__DIR__ . '/../repository/UserRepository.php');
+include_once(__DIR__ . '/../repository/UserRepository.php');
 
 use repository\UserRepository;
 
